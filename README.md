@@ -1,59 +1,77 @@
-# KUAN — 款
+# Kuan Streetwear — 款
 
-Digital streetwear with an Asian, techno-urban spirit. Static site hosted on **GitHub Pages** at [kuanstreetwear.com](https://kuanstreetwear.com).
+A personal streetwear project and **visual archive** based in Sài Gòn. Static site
+hosted on **GitHub Pages** at [kuanstreetwear.com](https://kuanstreetwear.com).
+
+> Not a store. Not a brand (yet). A living design project: clothing modification,
+> documentation, and visual identity — between Vietnamese street culture and
+> post-Soviet utility.
 
 ## Structure
 
 ```
 /
-├── index.html            # Home — hero, manifesto teaser, latest drop
-├── drops/index.html      # Drops / lookbook (product grid, ready for real items)
-├── about/index.html      # Manifesto & brand principles
-├── contact/index.html    # Contact form + channels
-├── 404.html              # Custom not-found page
-├── favicon.svg           # 款 mark favicon
-├── logo.png              # Brand logo (used for social/OG preview)
-├── CNAME                 # Custom domain (kuanstreetwear.com)
+├── index.html                  # Main — hero, selected projects, latest journal, story intro
+├── story/index.html            # Story — how it started
+├── projects/index.html         # Projects — KSW archive grid
+│   └── projects/ksw-001/       # Project detail template (base item / idea / mods / result / gallery / specs)
+├── blog/index.html             # Journal — editorial article list
+│   └── blog/blank-tees/        # Article template
+├── about/index.html            # About + contacts (Instagram, email, Telegram)
+├── 404.html
+├── favicon.svg                 # 款 mark
+├── logo.png                    # legacy logo (social/OG preview)
+├── CNAME                       # custom domain
 └── assets/
-    ├── css/style.css     # Design system + components
-    └── js/main.js        # Nav, scroll reveal, marquee, form
+    ├── css/style.css           # design system (editorial / archive)
+    └── js/main.js              # mobile nav, scroll reveal, copy-email, year
 ```
 
 ## Design system
 
-- **Theme:** near-black `#0b0b0c` with techno-red accent `#e3261b`
-- **Fonts** (one Google Fonts request, preconnected, `display=swap`):
-  - `Chakra Petch` — display / headings (techno)
-  - `Space Mono` — UI / labels / body
-  - `Noto Sans JP` — CJK accents (款 mark)
-- **The mark:** 款 (kuǎn) — "style / model / form" — used as watermark, favicon and divider.
+**Theme — editorial archive, light.**
 
-All design tokens live as CSS variables in `:root` (`assets/css/style.css`).
+- **Colors:** warm off-white paper `#f4f1ea`, near-black ink `#17160f`, concrete
+  grey `#6f6d63`; dark sections `#15140f`; single restrained accent — muted
+  industrial orange `#bf4d18` (used sparingly).
+- **Typography** (one Google Fonts request, preconnected, `display=swap`):
+  - **Inter Tight** — primary (display + UI). Supports **Latin, Cyrillic, Vietnamese**.
+  - **IBM Plex Mono** — technical labels, codes, coordinates (also Cyrillic/Vietnamese).
+  - **Noto Sans JP** — decorative microtypography only.
+- **The mark:** 款 (kuǎn — "style / model / form"), used as favicon and quiet accent.
+- **Archive language:** index numbers (`001`), codes (`KSW-001`), coordinates
+  (`10°46′37″N 106°41′18″E`), `+` markers, bracketed section labels.
+
+### Multilingual microtypography (intentional, subtle)
+
+- **English** — main reading language.
+- **Russian** — small section labels (`ПРОЕКТ`, `ЖУРНАЛ`, `ИСТОРИЯ`, `О ПРОЕКТЕ`)
+  and occasional titles (`Сделано в Сайгоне`).
+- **Vietnamese** — location and place names (`Sài Gòn / Việt Nam`).
+- **Japanese** — decorative side labels / single glyphs only (`アーカイブ`, `サイゴン`, `款`).
+
+Readability first — never more than a couple of scripts active on a screen.
 
 ## Editing content
 
-- **Add a product:** copy a `.card` block in `drops/index.html`. Swap the kanji in
-  `.card__media .kanji`, the title and price. Replace the kanji block with an
-  `<img>` once real photos exist.
-- **Update navigation/footer:** these are repeated in each HTML file (static site,
-  no build step). Keep them in sync.
-- **Colors / fonts:** change the variables in `:root`.
-
-## Contact form
-
-The form on `/contact/` has **no backend yet** — `main.js` just shows a confirmation.
-To make it live, point it at a service like [Formspree](https://formspree.io) or
-[Getform](https://getform.io): set the `<form action="...">` and remove the
-`e.preventDefault()` handler in `main.js`.
+- **Add a project:** copy a `.proj` card in `projects/index.html`; duplicate
+  `projects/ksw-001/` for a detail page. Swap the code, title, meta, tags, and
+  replace the `.frame` placeholder with a real `<img>` inside it.
+- **Add an article:** copy an `.entry` row in `blog/index.html`; duplicate
+  `blog/blank-tees/` for the article body.
+- **Real photos:** drop an `<img>` inside any `.frame` (it crops with
+  `object-fit: cover`); keep the `.frame__code` label for the archival look.
+- **Colors / fonts:** edit the variables in `:root` (`assets/css/style.css`).
+- **Nav / footer** are repeated per page (static, no build step) — keep in sync.
 
 ## Local preview
 
 ```bash
 python3 -m http.server 8000
-# open http://localhost:8000
+# http://localhost:8000
 ```
 
 ## Deploy
 
-Push to the default branch — GitHub Pages serves the root. The `CNAME` file keeps
-the custom domain bound.
+GitHub Pages serves the repository root from the default branch (`main`). The
+`CNAME` keeps the custom domain bound.

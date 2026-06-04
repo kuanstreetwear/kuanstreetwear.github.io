@@ -1,8 +1,8 @@
-/* KUAN — interactions: mobile nav, scroll reveal, year, marquee duplication */
+/* KUAN STREETWEAR — interactions (minimal, editorial) */
 (function () {
   "use strict";
 
-  /* ---- Mobile nav toggle ---- */
+  // Mobile nav
   var burger = document.querySelector(".burger");
   if (burger) {
     burger.addEventListener("click", function () {
@@ -17,53 +17,36 @@
     });
   }
 
-  /* ---- Hide nav on scroll down, show on scroll up ---- */
-  var nav = document.querySelector(".nav");
-  var lastY = window.scrollY;
-  if (nav) {
-    window.addEventListener("scroll", function () {
-      var y = window.scrollY;
-      if (document.body.classList.contains("menu-open")) return;
-      if (y > lastY && y > 200) nav.style.transform = "translateY(-100%)";
-      else nav.style.transform = "translateY(0)";
-      lastY = y;
-    }, { passive: true });
-  }
-
-  /* ---- Scroll reveal ---- */
-  var revealEls = document.querySelectorAll("[data-reveal]");
-  if ("IntersectionObserver" in window && revealEls.length) {
+  // Subtle scroll reveal
+  var els = document.querySelectorAll("[data-reveal]");
+  if ("IntersectionObserver" in window && els.length) {
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          io.unobserve(entry.target);
-        }
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("vis"); io.unobserve(e.target); }
       });
-    }, { threshold: 0.15 });
-    revealEls.forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
   } else {
-    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+    els.forEach(function (el) { el.classList.add("vis"); });
   }
 
-  /* ---- Duplicate marquee content for seamless loop ---- */
-  document.querySelectorAll(".marquee__track").forEach(function (track) {
-    track.innerHTML += track.innerHTML;
-  });
-
-  /* ---- Current year in footers ---- */
+  // Year
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
   });
 
-  /* ---- Contact form (no backend yet) ---- */
-  var form = document.querySelector("[data-contact-form]");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var note = form.querySelector("[data-form-note]");
-      if (note) note.textContent = "// SIGNAL RECEIVED — we'll be in touch.";
-      form.reset();
+  // Copy-to-clipboard for email links marked data-copy
+  document.querySelectorAll("[data-copy]").forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      var text = el.getAttribute("data-copy");
+      if (navigator.clipboard && text) {
+        e.preventDefault();
+        navigator.clipboard.writeText(text).then(function () {
+          var prev = el.getAttribute("data-label-was") || el.querySelector(".v") && el.querySelector(".v").textContent;
+          var v = el.querySelector(".v");
+          if (v) { var orig = v.textContent; v.textContent = "copied ✓"; setTimeout(function () { v.textContent = orig; }, 1400); }
+        });
+      }
     });
-  }
+  });
 })();

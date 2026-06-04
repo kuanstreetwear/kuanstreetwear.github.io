@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="10" fill="#0b0b0c"/>
-  <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle"
+  <rect width="64" height="64" rx="9" fill="#17160f"/>
+  <text x="50%" y="53%" dominant-baseline="central" text-anchor="middle"
         font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif"
-        font-size="44" font-weight="700" fill="#e3261b">款</text>
+        font-size="42" font-weight="700" fill="#f4f1ea">款</text>
+  <rect x="8" y="46" width="20" height="4" fill="#bf4d18"/>
 </svg>
