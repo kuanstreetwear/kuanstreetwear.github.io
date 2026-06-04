@@ -125,6 +125,8 @@ h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.02em; line-heig
   text-transform: uppercase;
 }
 .logo span { color: inherit; }
+.logo-img { display: block; height: 26px; width: auto; }
+.footer-logo { height: 40px; filter: invert(1); }
 .nav__links { display: flex; gap: 26px; justify-self: center; }
 .nav__links a {
   font-size: 0.92rem;
