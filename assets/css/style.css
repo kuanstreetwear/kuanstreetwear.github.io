@@ -180,11 +180,6 @@ body.menu-open .burger span::after  { transform: translate(-50%, -50%) rotate(-4
   width: 100%; height: 100%; object-fit: cover;
   filter: grayscale(1) contrast(1.06) brightness(0.99);
 }
-.frame--photo::before { /* unifying cold tint */
-  content: ""; position: absolute; inset: 0; z-index: 1;
-  background: rgba(19, 138, 126, 0.07);
-  mix-blend-mode: multiply;
-}
 .frame--shade::after { /* legibility gradient for overlaid labels */
   content: ""; position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0) 32%, rgba(0,0,0,0.10) 62%, rgba(0,0,0,0.55) 100%);
