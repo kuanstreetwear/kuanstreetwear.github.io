@@ -1,15 +1,15 @@
-# Global site settings — edited in the CMS under "Site → Contacts & Footer".
-# Used by the footer (every page) and the About page.
 contact:
-  instagram_handle: "@kuanstreetwear"
-  instagram_url: "https://instagram.com/kuanstreetwear"
-  email: "jack@kuanstreetwear.com"
-  telegram_handle: "@ipacmanx"
-  telegram_url: "https://t.me/ipacmanx"
+  instagram_handle: kuanstreetwear
+  instagram_url: https://instagram.com/kuanstreetwear
+  email: jack@kuanstreetwear.com
+  telegram_handle: ipacmanx
+  telegram_url: https://t.me/ipacmanx
 location:
-  place: "Sài Gòn / Việt Nam"
-  coordinates: "10°47′47″N · 106°44′23″E"
-  district: "Quận 2 (District 2)"
-  since: "2020"
+  place: Sài Gòn / Việt Nam
+  coordinates: 10°47′47″N · 106°44′23″E
+  district: Quận 2 (District 2)
+  since: '2020'
 footer:
-  about: "I'm Kuan. Designer, documenter, and curious about clothes, cities, and the details in between."
+  about: |-
+    Kuan Streetwear is custom diy studio.
+    Tech design curious about clothes, cities, and the details in between.
