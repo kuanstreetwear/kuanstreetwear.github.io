@@ -1,5 +1,5 @@
 # Sveltia CMS configuration
-# Docs: https://sveltiacms.app/  ·  Field reference matches the Jekyll front-matter.
+# Docs: https://sveltiacms.app/  ·  Field names mirror the Jekyll front-matter.
 
 backend:
   name: github
@@ -27,6 +27,7 @@ collections:
     summary: "{{title}}  ·  № {{number}}  ·  {{date}}"
     sortable_fields: [date, number, title]
     fields:
+      - { name: published, label: "Published (uncheck to keep as draft)", widget: boolean, default: true }
       - { name: title, label: Title, widget: string }
       - { name: date, label: Date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
       - { name: number, label: "Index № (e.g. 04)", widget: string }
@@ -52,6 +53,7 @@ collections:
     summary: "{{code}}  ·  {{title}}  ·  {{year}}"
     sortable_fields: [code, year, title]
     fields:
+      - { name: published, label: "Published (uncheck to keep as draft)", widget: boolean, default: true }
       - { name: title, label: Title, widget: string }
       - { name: code, label: "Code (e.g. KSW-001)", widget: string }
       - { name: number, label: "Number (e.g. 001)", widget: string }
@@ -76,7 +78,7 @@ collections:
         widget: list
         required: false
         label_singular: Frame
-        summary: "{{code}} — {{fields.image}}"
+        summary: "{{fields.code}} — {{fields.image}}"
         fields:
           - { name: image, label: Image, widget: image }
           - { name: glyph, label: Glyph, widget: string, required: false }
@@ -84,3 +86,75 @@ collections:
       - { name: description, label: SEO description, widget: text, required: false }
       - { name: og_description, label: Social-share description, widget: text, required: false }
       - { name: body, label: Body, widget: markdown }
+
+  # ── PAGES (fixed-file pages) ─────────────────────────────────────────
+  - name: pages
+    label: Pages
+    editor: { preview: false }
+    files:
+      - name: about
+        label: About
+        file: about.md
+        fields:
+          - { name: layout, widget: hidden, default: about }
+          - { name: active, widget: hidden, default: about }
+          - { name: permalink, widget: hidden, default: /about/ }
+          - { name: seo_title, label: SEO title, widget: string }
+          - { name: description, label: SEO description, widget: text, required: false }
+          - { name: og_description, label: Social-share description, widget: text, required: false }
+          - { name: intro, label: Intro line (under the heading), widget: text }
+          - { name: portrait, label: Portrait image, widget: image, required: false }
+          - { name: portrait_code, label: Portrait label code, widget: string, required: false }
+          - { name: summary_points, label: Project summary bullets, widget: list, field: { name: point, label: Point, widget: string } }
+          - { name: body, label: Body, widget: markdown }
+      - name: story
+        label: Story
+        file: story.md
+        fields:
+          - { name: layout, widget: hidden, default: story }
+          - { name: active, widget: hidden, default: story }
+          - { name: permalink, widget: hidden, default: /story/ }
+          - { name: og_type, widget: hidden, default: article }
+          - { name: seo_title, label: SEO title, widget: string }
+          - { name: description, label: SEO description, widget: text, required: false }
+          - { name: og_description, label: Social-share description, widget: text, required: false }
+          - { name: intro, label: Intro line (under the heading), widget: text }
+          - { name: origin_image, label: Sidebar image, widget: image, required: false }
+          - { name: origin_glyph, label: "Sidebar glyph (e.g. 起)", widget: string, required: false }
+          - { name: origin_code, label: Sidebar label code, widget: string, required: false }
+          - { name: started, label: "Spec — Started", widget: string, required: false }
+          - { name: restarted, label: "Spec — Restarted", widget: string, required: false }
+          - { name: format, label: "Spec — Format", widget: string, required: false }
+          - { name: focus, label: "Spec — Focus", widget: string, required: false }
+          - { name: body, label: Body, widget: markdown }
+
+  # ── SITE SETTINGS ────────────────────────────────────────────────────
+  - name: settings
+    label: Site
+    files:
+      - name: contact
+        label: Contacts & Footer
+        file: _data/site.yml
+        fields:
+          - name: contact
+            label: Contact
+            widget: object
+            fields:
+              - { name: instagram_handle, label: Instagram handle, widget: string }
+              - { name: instagram_url, label: Instagram URL, widget: string }
+              - { name: email, label: Email, widget: string }
+              - { name: telegram_handle, label: Telegram handle, widget: string }
+              - { name: telegram_url, label: Telegram URL, widget: string }
+          - name: location
+            label: Location
+            widget: object
+            fields:
+              - { name: place, label: Place, widget: string }
+              - { name: coordinates, label: Coordinates, widget: string }
+              - { name: district, label: District, widget: string }
+              - { name: since, label: Since (year), widget: string }
+          - name: footer
+            label: Footer
+            widget: object
+            fields:
+              - { name: about, label: Footer "About" blurb, widget: text }

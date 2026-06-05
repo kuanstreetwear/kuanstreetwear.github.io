@@ -1,0 +1,40 @@
+---
+layout: default
+---
+  <header class="phead">
+    <div class="wrap">
+      <div class="phead__top">
+        <span class="brk">Story / Introduction · ИСТОРИЯ</span>
+        <span class="phead__num">00 — 款</span>
+      </div>
+      <h1>Story</h1>
+      {% if page.intro %}<p>{{ page.intro }}</p>{% endif %}
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap" style="display:grid;grid-template-columns:1.4fr 0.8fr;gap:clamp(28px,5vw,64px);align-items:start">
+      <div class="prose">
+        {{ content }}
+      </div>
+
+      <aside style="display:grid;gap:22px;position:sticky;top:80px">
+        {% if page.origin_image %}<div class="frame frame--ratio45 frame--photo frame--shade"><img src="{{ page.origin_image }}" alt="" loading="lazy">{% if page.origin_glyph %}<span class="frame__center jp">{{ page.origin_glyph }}</span>{% endif %}{% if page.origin_code %}<span class="frame__code">{{ page.origin_code }}</span>{% endif %}</div>{% endif %}
+        <dl class="dspec" style="border-top:1px solid var(--line)">
+          {% if page.started %}<div class="r"><dt>Started</dt><dd>{{ page.started }}</dd></div>{% endif %}
+          {% if page.restarted %}<div class="r"><dt>Restarted</dt><dd>{{ page.restarted }}</dd></div>{% endif %}
+          {% if page.format %}<div class="r"><dt>Format</dt><dd>{{ page.format }}</dd></div>{% endif %}
+          {% if page.focus %}<div class="r"><dt>Focus</dt><dd>{{ page.focus }}</dd></div>{% endif %}
+        </dl>
+        <span class="tlabel">ベトナム · РОССИЯ · 款</span>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band" style="text-align:center">
+    <div class="wrap">
+      <span class="tlabel">Continue</span>
+      <h2 style="font-size:clamp(1.6rem,4vw,2.4rem);margin:14px 0 22px">See the projects archive</h2>
+      <a class="viewall" href="/projects/" style="justify-content:center">Projects / KSW <span class="ar">→</span></a>
+    </div>
+  </section>

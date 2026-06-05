@@ -1,3 +1,5 @@
+{%- assign contact = site.data.site.contact -%}
+{%- assign loc = site.data.site.location -%}
   <footer class="footer">
     <div class="wrap">
       <div class="footer__grid">
@@ -7,12 +9,12 @@
           <p class="nfb">Not a brand. Not for sale.</p>
           <span class="footer__sys">KSW-Archive System</span>
         </div>
-        <div class="footer__col"><h4>About</h4><p>I'm Kuan. Designer, documenter, and curious about clothes, cities, and the details in between.</p></div>
-        <div class="footer__col"><h4>Location</h4><a href="/about/">Sài Gòn / Việt Nam</a><p class="coord" style="color:var(--grey-2)">10°47′47″N · 106°44′23″E</p><p class="coord" style="color:var(--grey-2)">Quận 2 (District 2)</p></div>
+        <div class="footer__col"><h4>About</h4><p>{{ site.data.site.footer.about }}</p></div>
+        <div class="footer__col"><h4>Location</h4><a href="/about/">{{ loc.place }}</a><p class="coord" style="color:var(--grey-2)">{{ loc.coordinates }}</p><p class="coord" style="color:var(--grey-2)">{{ loc.district }}</p></div>
         <div class="footer__col"><h4>Contact</h4>
-          <a class="ico" href="https://instagram.com/kuanstreetwear" target="_blank" rel="noopener">◎ @kuanstreetwear</a>
-          <a class="ico" href="mailto:jack@kuanstreetwear.com">✉ jack@kuanstreetwear.com</a>
-          <a class="ico" href="https://t.me/ipacmanx" target="_blank" rel="noopener">✈ @ipacmanx</a>
+          <a class="ico" href="{{ contact.instagram_url }}" target="_blank" rel="noopener">◎ {{ contact.instagram_handle }}</a>
+          <a class="ico" href="mailto:{{ contact.email }}">✉ {{ contact.email }}</a>
+          <a class="ico" href="{{ contact.telegram_url }}" target="_blank" rel="noopener">✈ {{ contact.telegram_handle }}</a>
         </div>
       </div>
       <div class="footer__bottom"><span>© <span data-year>2026</span> Kuan Streetwear</span><span>001 — 2024 · 款 アーカイブ</span></div>

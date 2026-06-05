@@ -10,25 +10,25 @@ hosted on **GitHub Pages** at [kuanstreetwear.com](https://kuanstreetwear.com).
 ## Engine
 
 Built with **Jekyll** (the generator GitHub Pages runs natively) plus **Sveltia
-CMS** for browser-based editing. Static pages stay as plain HTML; the blog and
-projects are data-driven collections rendered from Markdown through shared
-layouts — so the nav/head/footer live in one place instead of being copied into
-every file.
+CMS** for browser-based editing. The nav/head/footer live once in `_includes/`;
+the blog, projects, and the About/Story pages are rendered from Markdown through
+shared layouts. Only the bespoke home-page body and the 404 stay as inline HTML.
 
 ```
 /
 ├── _config.yml                 # Jekyll config — collections, permalinks, defaults
 ├── Gemfile                     # mirrors the GitHub Pages toolchain (github-pages gem)
 ├── _includes/                  # shared partials — head, nav, footer (single source)
-├── _layouts/                   # default, post (blog), project (projects)
-├── _blog/                      # ← BLOG entries (Markdown, edited via the CMS)
-├── _projects/                  # ← PROJECT entries (Markdown, edited via the CMS)
+├── _layouts/                   # default · post · project · about · story
+├── _data/site.yml              # ← SITE settings: contacts, location, footer blurb
+├── _blog/                      # ← BLOG entries (Markdown)
+├── _projects/                  # ← PROJECT entries (Markdown)
+├── about.md                    # ← About page content (layout: about)
+├── story.md                    # ← Story page content (layout: story)
 ├── admin/                      # Sveltia CMS — /admin (index.html + config.yml)
 │
-├── index.html                  # Main — static (hero, selected projects, latest journal, story)
-├── story/index.html            # Story — static
-├── about/index.html            # About + contacts — static
-├── 404.html                    # static
+├── index.html                  # Main — layout: default, bespoke hero/sections in body
+├── 404.html                    # static (minimal footer, left as plain HTML)
 ├── blog/index.html             # Journal — listing, loops the _blog collection
 ├── projects/index.html         # Projects — grid, loops the _projects collection
 ├── favicon.svg                 # 款 mark
@@ -42,6 +42,13 @@ every file.
 
 > Detail-page URLs are unchanged: `_blog/blank-tees.md` → `/blog/blank-tees/`,
 > `_projects/ksw-001.md` → `/projects/ksw-001/`.
+
+**CMS sections** (at `/admin`): **Blog**, **Projects**, **Pages** (About + Story),
+and **Site** (contacts / location / footer — edited once, applied everywhere).
+Contacts and location are sourced from `_data/site.yml` by both the footer and the
+About page. Blog posts and projects have a **Published** toggle — unchecking it
+keeps the entry as a draft (`published: false`), excluded from the build and the
+listings until you turn it on.
 
 ## Design system
 
