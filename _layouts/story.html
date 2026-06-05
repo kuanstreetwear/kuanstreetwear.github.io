@@ -19,7 +19,7 @@ layout: default
       </div>
 
       <aside style="display:grid;gap:22px;position:sticky;top:80px">
-        {% if page.origin_image %}<div class="frame frame--ratio45 frame--photo frame--shade"><img src="{{ page.origin_image }}" alt="" loading="lazy">{% if page.origin_glyph %}<span class="frame__center jp">{{ page.origin_glyph }}</span>{% endif %}{% if page.origin_code %}<span class="frame__code">{{ page.origin_code }}</span>{% endif %}</div>{% endif %}
+        {% if page.origin_image %}{% assign _ext = page.origin_image | split: "." | last | downcase %}<div class="frame frame--ratio45 frame--photo frame--shade">{% if _ext == "webm" or _ext == "mp4" %}<video src="{{ page.origin_image }}" autoplay muted loop playsinline preload="auto"></video>{% else %}<img src="{{ page.origin_image }}" alt="" loading="lazy">{% endif %}{% if page.origin_glyph %}<span class="frame__center jp">{{ page.origin_glyph }}</span>{% endif %}{% if page.origin_code %}<span class="frame__code">{{ page.origin_code }}</span>{% endif %}</div>{% endif %}
         <dl class="dspec" style="border-top:1px solid var(--line)">
           {% if page.started %}<div class="r"><dt>Started</dt><dd>{{ page.started }}</dd></div>{% endif %}
           {% if page.restarted %}<div class="r"><dt>Restarted</dt><dd>{{ page.restarted }}</dd></div>{% endif %}

@@ -7,7 +7,7 @@ seo_title: Story — Kuan Streetwear
 description: How Kuan Streetwear started — a trip to Vietnam in 2020, local streetwear inspiration, and a personal project continued in Sài Gòn.
 og_description: How the project started, and where it is now.
 intro: A small idea from a trip became a personal streetwear archive based in Sài Gòn.
-origin_image: https://picsum.photos/seed/ksw61/800/1066?grayscale
+origin_image: /assets/img/saigon.webm
 origin_glyph: 起
 origin_code: ORIGIN / 2020
 started: 2020 · Vietnam

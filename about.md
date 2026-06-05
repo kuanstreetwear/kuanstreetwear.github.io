@@ -6,7 +6,7 @@ seo_title: About — Kuan Streetwear
 description: 'About Kuan Streetwear — a personal streetwear project and visual archive based in Sài Gòn. Contacts: Instagram and email.'
 og_description: A personal streetwear project and visual archive based in Sài Gòn.
 intro: A personal streetwear project and visual archive based in Sài Gòn — about clothes, cities, and the details in between.
-portrait: https://picsum.photos/seed/ksw92/800/1000?grayscale
+portrait: /assets/img/portrait.jpg
 portrait_code: PORTRAIT / KUAN
 summary_points:
   - Personal streetwear project & visual archive
