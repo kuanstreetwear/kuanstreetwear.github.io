@@ -1,0 +1,58 @@
+---
+layout: default
+---
+  <header class="phead">
+    <div class="wrap">
+      <div class="phead__top">
+        <span class="brk"><a href="/projects/">Projects</a> / {{ page.code }}</span>
+        <span class="phead__num">{{ page.number }} — {{ page.glyph }}</span>
+      </div>
+      <h1>{{ page.title }}</h1>
+      {% if page.summary %}<p>{{ page.summary }}</p>{% endif %}
+      <div style="display:flex;gap:22px;flex-wrap:wrap;margin-top:18px">
+        <span class="tlabel">{{ page.year }}</span>{% if page.location %}<span class="tlabel">{{ page.location }}</span>{% endif %}{% if page.tags %}<span class="tlabel tlabel--accent">{% for tag in page.tags %}#{{ tag }} {% endfor %}</span>{% endif %}
+      </div>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap" style="display:grid;grid-template-columns:1.3fr 0.9fr;gap:clamp(28px,5vw,64px);align-items:start">
+      <div>
+        {% if page.cover %}<div class="frame frame--photo frame--shade frame--ratio169" style="margin-bottom:clamp(14px,2vw,20px)"><img src="{{ page.cover }}" alt="" loading="lazy">{% if page.cover_code %}<span class="frame__code">{{ page.cover_code }}</span>{% endif %}</div>{% endif %}
+        <div class="prose">
+          {{ content }}
+        </div>
+      </div>
+
+      <aside style="display:grid;gap:22px;position:sticky;top:80px">
+        <dl class="dspec">
+          {% if page.code %}<div class="r"><dt>Code</dt><dd>{{ page.code }}</dd></div>{% endif %}
+          {% if page.base_item %}<div class="r"><dt>Base item</dt><dd>{{ page.base_item }}</dd></div>{% endif %}
+          {% if page.material %}<div class="r"><dt>Material</dt><dd>{{ page.material }}</dd></div>{% endif %}
+          {% if page.process %}<div class="r"><dt>Process</dt><dd>{{ page.process }}</dd></div>{% endif %}
+          {% if page.origin %}<div class="r"><dt>Origin</dt><dd>{{ page.origin }}</dd></div>{% endif %}
+          {% if page.year %}<div class="r"><dt>Year</dt><dd>{{ page.year }}</dd></div>{% endif %}
+          {% if page.status %}<div class="r"><dt>Status</dt><dd>{{ page.status }}</dd></div>{% endif %}
+        </dl>
+        <span class="tlabel">{{ page.aside_label | default: page.glyph }}</span>
+      </aside>
+    </div>
+  </section>
+
+  {% if page.gallery and page.gallery.size > 0 %}
+  <section class="band">
+    <div class="wrap">
+      <div class="band__head"><span class="brk">Gallery</span><span class="tlabel">{% if page.gallery.size < 10 %}0{% endif %}{{ page.gallery.size }} frames</span></div>
+      <div class="gallery">
+        {% for shot in page.gallery %}
+        <div class="frame frame--ratio34 frame--photo frame--shade"><img src="{{ shot.image }}" alt="" loading="lazy">{% if shot.glyph %}<span class="frame__center jp">{{ shot.glyph }}</span>{% endif %}{% if shot.code %}<span class="frame__code">{{ shot.code }}</span>{% endif %}</div>
+        {% endfor %}
+      </div>
+      <div style="margin-top:36px"><a class="viewall" href="/projects/">Back to projects <span class="ar">→</span></a></div>
+    </div>
+  </section>
+  {% else %}
+  <section class="band">
+    <div class="wrap"><a class="viewall" href="/projects/">Back to projects <span class="ar">→</span></a></div>
+  </section>
+  {% endif %}

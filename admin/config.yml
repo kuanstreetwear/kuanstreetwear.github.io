@@ -1,0 +1,86 @@
+# Sveltia CMS configuration
+# Docs: https://sveltiacms.app/  ·  Field reference matches the Jekyll front-matter.
+
+backend:
+  name: github
+  repo: kuanstreetwear/kuanstreetwear.github.io
+  branch: main
+  # Auth: Sveltia signs in with a GitHub Personal Access Token by default
+  # (no OAuth app needed). To enable the one-click "Sign in with GitHub"
+  # button instead, deploy sveltia-cms-auth and set:
+  # base_url: https://your-auth-worker.example.workers.dev
+
+# Uploaded images land here and are referenced from the site root.
+media_folder: assets/img/uploads
+public_folder: /assets/img/uploads
+
+collections:
+  # ── BLOG ─────────────────────────────────────────────────────────────
+  - name: blog
+    label: Blog
+    label_singular: Post
+    folder: _blog
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}}  ·  № {{number}}  ·  {{date}}"
+    sortable_fields: [date, number, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+      - { name: number, label: "Index № (e.g. 04)", widget: string }
+      - { name: glyph, label: "Glyph (e.g. 白)", widget: string }
+      - { name: location, label: Location, widget: string, default: "Sài Gòn" }
+      - { name: tags, label: Tags, widget: list, default: [] }
+      - { name: excerpt, label: Excerpt (shown on the listing), widget: text }
+      - { name: cover, label: Cover image, widget: image, required: false, hint: "Upload, or paste an external URL" }
+      - { name: cover_code, label: Cover label code, widget: string, required: false }
+      - { name: description, label: SEO description, widget: text, required: false }
+      - { name: og_description, label: Social-share description, widget: text, required: false }
+      - { name: body, label: Body, widget: markdown }
+
+  # ── PROJECTS ─────────────────────────────────────────────────────────
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: _projects
+    create: true
+    slug: "{{fields.code | lower}}"
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{code}}  ·  {{title}}  ·  {{year}}"
+    sortable_fields: [code, year, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: code, label: "Code (e.g. KSW-001)", widget: string }
+      - { name: number, label: "Number (e.g. 001)", widget: string }
+      - { name: year, label: Year, widget: string }
+      - { name: glyph, label: "Glyph (e.g. 区)", widget: string }
+      - { name: location, label: Location, widget: string, default: "Sài Gòn, VN" }
+      - { name: tags, label: Tags, widget: list, default: [] }
+      - { name: summary, label: Summary (page header), widget: text }
+      - { name: excerpt, label: Card description (listing), widget: text }
+      - { name: cover, label: Cover image (16:9), widget: image, required: false, hint: "Upload, or paste an external URL" }
+      - { name: cover_code, label: Cover label code, widget: string, required: false }
+      - { name: card_image, label: Card image (3:4, listing), widget: image, required: false }
+      - { name: card_code, label: Card label code, widget: string, required: false }
+      - { name: base_item, label: "Spec — Base item", widget: string, required: false }
+      - { name: material, label: "Spec — Material", widget: string, required: false }
+      - { name: process, label: "Spec — Process", widget: string, required: false }
+      - { name: origin, label: "Spec — Origin", widget: string, required: false, default: "Sài Gòn, Việt Nam" }
+      - { name: status, label: "Spec — Status", widget: string, required: false, default: "Archived" }
+      - { name: aside_label, label: Sidebar label, widget: string, required: false }
+      - name: gallery
+        label: Gallery
+        widget: list
+        required: false
+        label_singular: Frame
+        summary: "{{code}} — {{fields.image}}"
+        fields:
+          - { name: image, label: Image, widget: image }
+          - { name: glyph, label: Glyph, widget: string, required: false }
+          - { name: code, label: Label code, widget: string, required: false }
+      - { name: description, label: SEO description, widget: text, required: false }
+      - { name: og_description, label: Social-share description, widget: text, required: false }
+      - { name: body, label: Body, widget: markdown }

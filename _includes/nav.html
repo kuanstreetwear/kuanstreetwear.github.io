@@ -1,0 +1,17 @@
+  <nav class="nav">
+    <div class="nav__inner wrap">
+      <a class="logo" href="/" aria-label="Kuan Streetwear"><img class="logo-img" src="/assets/img/logo.svg" alt="Kuan Streetwear" width="104" height="29"></a>
+      <ul class="nav__links" id="menu">
+        <li><a href="/"{% if page.active == "main" %} aria-current="page"{% endif %}>Main</a></li>
+        <li><a href="/story/"{% if page.active == "story" %} aria-current="page"{% endif %}>Story</a></li>
+        <li><a href="/projects/"{% if page.active == "projects" %} aria-current="page"{% endif %}>Projects</a></li>
+        <li><a href="/blog/"{% if page.active == "blog" %} aria-current="page"{% endif %}>Blog</a></li>
+        <li><a href="/about/"{% if page.active == "about" %} aria-current="page"{% endif %}>About</a></li>
+      </ul>
+      <div class="nav__right">
+        <span class="nav__loc"><span class="dot"></span> Sai Gon / Vietnam</span>
+        <span class="nav__corner jp">ク</span>
+      </div>
+      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    </div>
+  </nav>

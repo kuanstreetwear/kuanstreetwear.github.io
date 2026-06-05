@@ -1,0 +1,28 @@
+---
+layout: default
+---
+  <header class="phead">
+    <div class="wrap">
+      <div class="phead__top">
+        <span class="brk"><a href="/blog/">Blog</a> / № {{ page.number }}</span>
+        <span class="phead__num">{{ page.glyph }} — 款</span>
+      </div>
+      <h1 style="max-width:18ch">{{ page.title }}</h1>
+      <div style="display:flex;gap:22px;flex-wrap:wrap;margin-top:18px">
+        <span class="tlabel">{{ page.date | date: "%b %d, %Y" }}</span>{% if page.location %}<span class="tlabel">{{ page.location }}</span>{% endif %}{% if page.tags %}<span class="tlabel tlabel--accent">{% for tag in page.tags %}#{{ tag }} {% endfor %}</span>{% endif %}
+      </div>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap">
+      {% if page.cover %}<div class="frame frame--photo frame--shade frame--ratio169" style="margin-bottom:clamp(20px,3vw,40px)"><img src="{{ page.cover }}" alt="" loading="lazy">{% if page.cover_code %}<span class="frame__code">{{ page.cover_code }}</span>{% endif %}</div>{% endif %}
+      <article class="prose" style="margin-inline:auto">
+        {{ content }}
+      </article>
+
+      <div style="max-width:64ch;margin:40px auto 0">
+        <a class="viewall" href="/blog/">Back to journal <span class="ar">→</span></a>
+      </div>
+    </div>
+  </section>

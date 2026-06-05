@@ -1,43 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog — Kuan Streetwear Journal</title>
-  <meta name="description" content="A clean editorial archive: notes on clothing references, blank tees, local Vietnamese brands, materials, and customization experiments.">
-  <meta name="theme-color" content="#f2f2f1">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Blog — Kuan Streetwear Journal">
-  <meta property="og:description" content="Notes on clothing, local brands, materials, and experiments.">
-  <meta property="og:image" content="/logo.png">
-  <meta property="og:url" content="https://kuanstreetwear.com/blog/">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://kuanstreetwear.com/blog/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@500;700&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-
-  <nav class="nav">
-    <div class="nav__inner wrap">
-      <a class="logo" href="/" aria-label="Kuan Streetwear"><img class="logo-img" src="/assets/img/logo.svg" alt="Kuan Streetwear" width="104" height="29"></a>
-      <ul class="nav__links" id="menu">
-        <li><a href="/">Main</a></li>
-        <li><a href="/story/">Story</a></li>
-        <li><a href="/projects/">Projects</a></li>
-        <li><a href="/blog/" aria-current="page">Blog</a></li>
-        <li><a href="/about/">About</a></li>
-      </ul>
-      <div class="nav__right">
-        <span class="nav__loc"><span class="dot"></span> Sai Gon / Vietnam</span>
-        <span class="nav__corner jp">ク</span>
-      </div>
-      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span></button>
-    </div>
-  </nav>
-
+---
+layout: default
+active: blog
+seo_title: Blog — Kuan Streetwear Journal
+description: "A clean editorial archive: notes on clothing references, blank tees, local Vietnamese brands, materials, and customization experiments."
+og_description: Notes on clothing, local brands, materials, and experiments.
+---
   <header class="phead">
     <div class="wrap">
       <div class="phead__top">
@@ -51,69 +18,17 @@
 
   <section class="band">
     <div class="wrap">
-      <a class="entry" href="/blog/blank-tees/" data-reveal>
-        <span class="entry__idx">May 12, 2024<br><span class="muted">№ 04</span></span>
+      {% assign posts = site.blog | sort: "date" | reverse %}
+      {% for post in posts %}
+      <a class="entry" href="{{ post.url }}" data-reveal>
+        <span class="entry__idx">{{ post.date | date: "%b %d, %Y" }}<br><span class="muted">№ {{ post.number }}</span></span>
         <div>
-          <h2 class="entry__title">On Blank Tees and Proportions</h2>
-          <p class="entry__excerpt">Why the right blank matters more than the print. Neckline, fabric weight, shoulder drop, and how a few millimetres change the whole silhouette.</p>
-          <p class="entry__tags">#basics · #fit · #materials</p>
+          <h2 class="entry__title">{{ post.title }}</h2>
+          <p class="entry__excerpt">{{ post.excerpt }}</p>
+          <p class="entry__tags">{% for tag in post.tags %}#{{ tag }}{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
         </div>
-        <span class="entry__idx jp">白</span>
+        <span class="entry__idx jp">{{ post.glyph }}</span>
       </a>
-
-      <a class="entry" href="/blog/" data-reveal>
-        <span class="entry__idx">Apr 03, 2024<br><span class="muted">№ 03</span></span>
-        <div>
-          <h2 class="entry__title">Local Brands, Local Language</h2>
-          <p class="entry__excerpt">A running list of Vietnamese labels and makers that inspire this project — and why their confidence on the street matters.</p>
-          <p class="entry__tags">#vietnam · #references · #culture</p>
-        </div>
-        <span class="entry__idx jp">店</span>
-      </a>
-
-      <a class="entry" href="/blog/" data-reveal>
-        <span class="entry__idx">Feb 22, 2024<br><span class="muted">№ 02</span></span>
-        <div>
-          <h2 class="entry__title">Post-Soviet Utility, Quietly</h2>
-          <p class="entry__excerpt">Borrowing from industrial labels, stencilled type, and utilitarian detailing — without turning it into costume.</p>
-          <p class="entry__tags">#utility · #type · #heritage</p>
-        </div>
-        <span class="entry__idx jp">具</span>
-      </a>
-
-      <a class="entry" href="/blog/" data-reveal>
-        <span class="entry__idx">Jan 18, 2024<br><span class="muted">№ 01</span></span>
-        <div>
-          <h2 class="entry__title">Materials and Aging</h2>
-          <p class="entry__excerpt">How cotton and nylon age in Sài Gòn's heat and humidity, and why planned wear is part of the design, not a flaw.</p>
-          <p class="entry__tags">#materials · #climate · #process</p>
-        </div>
-        <span class="entry__idx jp">布</span>
-      </a>
+      {% endfor %}
     </div>
   </section>
-
-  <footer class="footer">
-    <div class="wrap">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a class="footer-name" href="/" aria-label="Kuan Streetwear"><img class="logo-img footer-logo" src="/assets/img/logo.svg" alt="Kuan Streetwear" width="150" height="42"></a>
-          <p>Personal project and visual archive.</p>
-          <p class="nfb">Not a brand. Not for sale.</p>
-          <span class="footer__sys">KSW-Archive System</span>
-        </div>
-        <div class="footer__col"><h4>About</h4><p>I'm Kuan. Designer, documenter, and curious about clothes, cities, and the details in between.</p></div>
-        <div class="footer__col"><h4>Location</h4><a href="/about/">Sài Gòn / Việt Nam</a><p class="coord" style="color:var(--grey-2)">10°47′47″N · 106°44′23″E</p><p class="coord" style="color:var(--grey-2)">Quận 2 (District 2)</p></div>
-        <div class="footer__col"><h4>Contact</h4>
-          <a class="ico" href="https://instagram.com/kuanstreetwear" target="_blank" rel="noopener">◎ @kuanstreetwear</a>
-          <a class="ico" href="mailto:jack@kuanstreetwear.com">✉ jack@kuanstreetwear.com</a>
-          <a class="ico" href="https://t.me/ipacmanx" target="_blank" rel="noopener">✈ @ipacmanx</a>
-        </div>
-      </div>
-      <div class="footer__bottom"><span>© <span data-year>2026</span> Kuan Streetwear</span><span>001 — 2024 · 款 アーカイブ</span></div>
-    </div>
-  </footer>
-
-  <script src="/assets/js/main.js" defer></script>
-</body>
-</html>

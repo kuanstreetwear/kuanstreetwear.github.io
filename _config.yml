@@ -1,0 +1,45 @@
+title: Kuan Streetwear
+description: >-
+  Kuan Streetwear is a personal clothing modification project and visual
+  archive based in Sài Gòn — local streetwear culture, post-Soviet utility,
+  quiet technological details.
+url: "https://kuanstreetwear.com"
+
+# Build
+markdown: kramdown
+permalink: pretty
+
+# Collections — the only content edited through the CMS
+collections:
+  blog:
+    output: true
+    permalink: /blog/:name/
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Per-collection defaults (layout + active nav item) so .md files stay lean
+defaults:
+  - scope:
+      path: ""
+      type: blog
+    values:
+      layout: post
+      active: blog
+      og_type: article
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+      active: projects
+      og_type: article
+
+# Files Jekyll should not copy into the built site
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - .gitignore
+  - .DS_Store
