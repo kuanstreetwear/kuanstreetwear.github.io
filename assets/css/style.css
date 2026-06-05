@@ -512,3 +512,12 @@ body.menu-open .burger span::after  { transform: translate(-50%, -50%) rotate(-4
   *, *::before, *::after { animation: none !important; transition: none !important; }
   [data-reveal] { opacity: 1; transform: none; }
 }
+
+/* =============================================================
+   CONTACT ICONS (inline line icons, inherit currentColor)
+   ============================================================= */
+.ico-svg { width: 16px; height: 16px; flex: none; display: block; }
+.footer__col .ico .ico-svg { opacity: 0.85; }
+.footer__col .ico:hover .ico-svg { opacity: 1; }
+.contact-list .k { display: inline-flex; align-items: center; gap: 9px; }
+.contact-list .k .ico-svg { color: var(--ink); }

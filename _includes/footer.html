@@ -12,9 +12,9 @@
         <div class="footer__col"><h4>About</h4><p>{{ site.data.site.footer.about }}</p></div>
         <div class="footer__col"><h4>Location</h4><a href="/about/">{{ loc.place }}</a><p class="coord" style="color:var(--grey-2)">{{ loc.coordinates }}</p><p class="coord" style="color:var(--grey-2)">{{ loc.district }}</p></div>
         <div class="footer__col"><h4>Contact</h4>
-          <a class="ico" href="{{ contact.instagram_url }}" target="_blank" rel="noopener">◎ {{ contact.instagram_handle }}</a>
-          <a class="ico" href="mailto:{{ contact.email }}">✉ {{ contact.email }}</a>
-          <a class="ico" href="{{ contact.telegram_url }}" target="_blank" rel="noopener">✈ {{ contact.telegram_handle }}</a>
+          <a class="ico" href="{{ contact.instagram_url }}" target="_blank" rel="noopener">{% include icon.html name="instagram" %}<span>{{ contact.instagram_handle }}</span></a>
+          <a class="ico" href="mailto:{{ contact.email }}">{% include icon.html name="mail" %}<span>{{ contact.email }}</span></a>
+          <a class="ico" href="{{ contact.telegram_url }}" target="_blank" rel="noopener">{% include icon.html name="telegram" %}<span>{{ contact.telegram_handle }}</span></a>
         </div>
       </div>
       <div class="footer__bottom"><span>© <span data-year>2026</span> Kuan Streetwear</span><span>001 — 2024 · 款 アーカイブ</span></div>
