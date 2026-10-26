@@ -76,9 +76,38 @@
       btn.textContent = open ? "[CLOSE]" : "[MENU]";
       if (open) $$(".menu__links b", panel).forEach((b, i) => setTimeout(() => scramble(b, b.dataset.text, 420), i * 60));
     };
-    btn.addEventListener("click", () => set(panel.hidden));
-    panel.addEventListener("click", e => { if (e.target.closest("a")) set(false); });
+    // Warm the cache for the menu targets so the next page paints right away.
+    const prefetched = new Set([location.pathname]);
+    const prefetch = href => {
+      const path = new URL(href, location.href).pathname;
+      if (prefetched.has(path)) return;
+      prefetched.add(path);
+      document.head.append(Object.assign(document.createElement("link"), { rel: "prefetch", href: path }));
+    };
+
+    btn.addEventListener("click", () => {
+      const open = panel.hidden;
+      set(open);
+      if (open) $$("a", panel).forEach(a => prefetch(a.href));
+    });
+    panel.addEventListener("click", e => {
+      const a = e.target.closest("a");
+      if (!a) return;
+      // Same page (e.g. #archive on home): close and let it scroll.
+      if (new URL(a.href, location.href).pathname === location.pathname) { set(false); return; }
+      // Leaving: keep the menu up until the next page paints — closing first flashed the old page.
+      panel.classList.add("is-leaving");
+      a.classList.add("is-going");
+    });
+    $$(".nav a").forEach(a => a.addEventListener("pointerenter", () => prefetch(a.href), { once: true }));
     addEventListener("keydown", e => { if (e.key === "Escape" && !panel.hidden) set(false); });
+    // Back/forward cache restores the page as it was left — with the menu still open.
+    addEventListener("pageshow", e => {
+      if (!e.persisted) return;
+      panel.classList.remove("is-leaving");
+      $$(".is-going", panel).forEach(n => n.classList.remove("is-going"));
+      set(false);
+    });
   }
 
   window.KUAN = { $, $$, calm, esc, scramble, segs, observe };
