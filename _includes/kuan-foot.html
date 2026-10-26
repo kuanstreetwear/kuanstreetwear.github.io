@@ -1,0 +1,12 @@
+{%- assign contact = site.data.site.contact -%}
+{%- assign loc = site.data.site.location -%}
+  <footer class="foot mono">
+    <span>© <span data-year>2026</span> Kuan Streetwear</span>
+    <span class="foot__links">
+      <a href="{{ contact.instagram_url }}" target="_blank" rel="noopener">[IG]</a>
+      <a href="{{ contact.telegram_url }}" target="_blank" rel="noopener">[TG]</a>
+      <a href="mailto:{{ contact.email }}">[MAIL]</a>
+    </span>
+    <span>{{ loc.place }}</span>
+    <span class="coords-live hide-sm" aria-hidden="true">X 0000 · Y 0000</span>
+  </footer>

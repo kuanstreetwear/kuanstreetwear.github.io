@@ -1,58 +1,45 @@
 ---
-layout: default
+layout: kuan
 ---
-  <header class="phead">
-    <div class="wrap">
-      <div class="phead__top">
-        <span class="brk"><a href="/projects/">Projects</a> / {{ page.code }}</span>
-        <span class="phead__num">{{ page.number }} — {{ page.glyph }}</span>
-      </div>
-      <h1>{{ page.title }}</h1>
-      {% if page.summary %}<p>{{ page.summary }}</p>{% endif %}
-      <div style="display:flex;gap:22px;flex-wrap:wrap;margin-top:18px">
-        <span class="tlabel">{{ page.year }}</span>{% if page.location %}<span class="tlabel">{{ page.location }}</span>{% endif %}{% if page.tags %}<span class="tlabel tlabel--accent">{% for tag in page.tags %}#{{ tag }} {% endfor %}</span>{% endif %}
-      </div>
-    </div>
-  </header>
+  <main class="page">
+    <header class="phead phead--entry">
+      <span class="eyebrow"><a href="/#archive">[01] Archive</a> / {{ page.code }}</span>
+      <h1 class="h1--entry">{{ page.title }}</h1>
+      {% if page.summary %}<p class="lead dim">{{ page.summary }}</p>{% endif %}
+    </header>
 
-  <section class="band">
-    <div class="wrap" style="display:grid;grid-template-columns:1.3fr 0.9fr;gap:clamp(28px,5vw,64px);align-items:start">
-      <div>
-        {% if page.cover %}<div class="frame frame--photo frame--shade frame--ratio169" style="margin-bottom:clamp(14px,2vw,20px)"><img src="{{ page.cover }}" alt="" loading="lazy">{% if page.cover_code %}<span class="frame__code">{{ page.cover_code }}</span>{% endif %}</div>{% endif %}
-        <div class="prose">
-          {{ content }}
+    <div class="split">
+      <article class="prose">
+        {% if page.cover %}
+        <div class="frame frame--wide">
+          <img src="{{ page.cover }}" alt="" loading="lazy">
+          {% if page.cover_code %}<span class="tag mono">{{ page.cover_code }}</span>{% endif %}
+          <i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br br_"></i>
         </div>
-      </div>
+        {% endif %}
+        {{ content }}
+        {% if page.gallery and page.gallery.size > 0 %}
+        <h3>Gallery</h3>
+        <div class="gal">
+          {% for shot in page.gallery %}<div class="frame"><img src="{{ shot.image }}" alt="" loading="lazy">{% if shot.code %}<span class="tag mono">{{ shot.code }}</span>{% endif %}</div>{% endfor %}
+        </div>
+        {% endif %}
+      </article>
 
-      <aside style="display:grid;gap:22px;position:sticky;top:80px">
-        <dl class="dspec">
-          {% if page.code %}<div class="r"><dt>Code</dt><dd>{{ page.code }}</dd></div>{% endif %}
-          {% if page.base_item %}<div class="r"><dt>Base item</dt><dd>{{ page.base_item }}</dd></div>{% endif %}
-          {% if page.material %}<div class="r"><dt>Material</dt><dd>{{ page.material }}</dd></div>{% endif %}
-          {% if page.process %}<div class="r"><dt>Process</dt><dd>{{ page.process }}</dd></div>{% endif %}
-          {% if page.origin %}<div class="r"><dt>Origin</dt><dd>{{ page.origin }}</dd></div>{% endif %}
-          {% if page.year %}<div class="r"><dt>Year</dt><dd>{{ page.year }}</dd></div>{% endif %}
-          {% if page.status %}<div class="r"><dt>Status</dt><dd>{{ page.status }}</dd></div>{% endif %}
-        </dl>
-        <span class="tlabel">{{ page.aside_label | default: page.glyph }}</span>
+      <aside class="aside">
+        <div class="status status--wide hud">
+          <i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br br_"></i>
+          <div class="status__head"><span class="chip"><i class="dot"></i>{{ page.status | default: "Archived" }}</span><span class="mono dim">{{ page.code }}</span></div>
+          <dl class="rows">
+            {% if page.base_item %}<dt>Base</dt><dd>{{ page.base_item }}</dd>{% endif %}
+            {% if page.material %}<dt>Material</dt><dd>{{ page.material }}</dd>{% endif %}
+            {% if page.process %}<dt>Process</dt><dd>{{ page.process }}</dd>{% endif %}
+            {% if page.origin %}<dt>Origin</dt><dd>{{ page.origin }}</dd>{% endif %}
+            {% if page.year %}<dt>Year</dt><dd>{{ page.year }}</dd>{% endif %}
+          </dl>
+        </div>
       </aside>
     </div>
-  </section>
 
-  {% if page.gallery and page.gallery.size > 0 %}
-  <section class="band">
-    <div class="wrap">
-      <div class="band__head"><span class="brk">Gallery</span><span class="tlabel">{% if page.gallery.size < 10 %}0{% endif %}{{ page.gallery.size }} frames</span></div>
-      <div class="gallery">
-        {% for shot in page.gallery %}
-        <div class="frame frame--ratio34 frame--photo frame--shade"><img src="{{ shot.image }}" alt="" loading="lazy">{% if shot.glyph %}<span class="frame__center jp">{{ shot.glyph }}</span>{% endif %}{% if shot.code %}<span class="frame__code">{{ shot.code }}</span>{% endif %}</div>
-        {% endfor %}
-      </div>
-      <div style="margin-top:36px"><a class="viewall" href="/projects/">Back to projects <span class="ar">→</span></a></div>
-    </div>
-  </section>
-  {% else %}
-  <section class="band">
-    <div class="wrap"><a class="viewall" href="/projects/">Back to projects <span class="ar">→</span></a></div>
-  </section>
-  {% endif %}
+    {% include kuan-cta.html href="/#archive" label="Archive" eyebrow="Back → [01]" %}
+  </main>

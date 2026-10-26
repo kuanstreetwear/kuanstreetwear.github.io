@@ -1,42 +1,20 @@
 ---
-layout: default
-active: projects
-seo_title: Projects — Kuan Streetwear Archive
-description: "An archive of documented clothing modification projects — KSW series. Not products for sale, but design objects and field notes."
-og_description: Documented clothing modification projects — the KSW series.
+layout: kuan
+active: archive
+seo_title: Archive — Kuan Streetwear
+description: "The project archive now lives on the home page."
 ---
-  <header class="phead">
-    <div class="wrap">
-      <div class="phead__top">
-        <span class="brk">Projects / Archive · ПРОЕКТЫ</span>
-        <span class="phead__num">KSW — 款</span>
-      </div>
-      <h1>Projects</h1>
-      <p>Documented design objects, not products for sale. Each entry records a base item, an idea, the modifications, and the result.</p>
-    </div>
-  </header>
-
-  <section class="band">
-    <div class="wrap">
-      {% assign items = site.projects | sort: "code" %}
-      <div class="band__head">
-        <span class="brk">Index / All</span>
-        <span class="tlabel">{% if items.size < 10 %}0{% endif %}{{ items.size }} entries · 2021—2024</span>
-      </div>
-      <div class="proj-grid">
-        {% for p in items %}
-        <a class="proj" href="{{ p.url }}" data-reveal>
-          <div class="proj__media">
-            <div class="frame frame--ratio34 frame--photo frame--shade"><img src="{{ p.card_image }}" alt="" loading="lazy">{% if p.glyph %}<span class="frame__center jp">{{ p.glyph }}</span>{% endif %}{% if p.card_code %}<span class="frame__code">{{ p.card_code }}</span>{% endif %}</div>
-            <span class="proj__num">{{ p.code }}</span><span class="proj__plus plus">+</span>
-          </div>
-          <div class="proj__body">
-            <div class="proj__row"><span class="proj__title">{{ p.title }}</span><span class="proj__meta">{{ p.year }}</span></div>
-            <p class="proj__desc">{{ p.excerpt }}</p>
-          </div>
-          <div class="proj__tags">{% for tag in p.tags %}<span>#{{ tag }}</span>{% endfor %}</div>
-        </a>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
+{%- comment -%}
+  Projects were merged into the home archive (assets/kuan/feed.json). This page only forwards old
+  links. The KSW entries in _projects/ are unpublished (published: false), not deleted — flip the
+  flag in the CMS to bring one back.
+{%- endcomment -%}
+  <meta http-equiv="refresh" content="0; url=/#archive">
+  <main class="page">
+    <header class="phead">
+      <span class="eyebrow">[01] Archive</span>
+      <h1><span>Moved</span></h1>
+      <p class="lead dim">Projects now live in the archive on the main page.</p>
+    </header>
+    {% include kuan-cta.html href="/#archive" label="Archive" eyebrow="Redirecting →" %}
+  </main>

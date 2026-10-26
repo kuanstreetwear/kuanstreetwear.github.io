@@ -1,28 +1,41 @@
 ---
-layout: default
+layout: kuan
 ---
-  <header class="phead">
-    <div class="wrap">
-      <div class="phead__top">
-        <span class="brk"><a href="/blog/">Blog</a> / № {{ page.number }}</span>
-        <span class="phead__num">{{ page.glyph }} — 款</span>
-      </div>
-      <h1 style="max-width:18ch">{{ page.title }}</h1>
-      <div style="display:flex;gap:22px;flex-wrap:wrap;margin-top:18px">
-        <span class="tlabel">{{ page.date | date: "%b %d, %Y" }}</span>{% if page.location %}<span class="tlabel">{{ page.location }}</span>{% endif %}{% if page.tags %}<span class="tlabel tlabel--accent">{% for tag in page.tags %}#{{ tag }} {% endfor %}</span>{% endif %}
-      </div>
-    </div>
-  </header>
+  <main class="page">
+    <header class="phead phead--entry">
+      <span class="eyebrow"><a href="/blog/">[04] Journal</a> / № {{ page.number }}</span>
+      <h1 class="h1--entry">{{ page.title }}</h1>
+      {% if page.excerpt %}<p class="lead dim">{{ page.excerpt }}</p>{% endif %}
+    </header>
 
-  <section class="band">
-    <div class="wrap">
-      {% if page.cover %}<div class="frame frame--photo frame--shade frame--ratio169" style="margin-bottom:clamp(20px,3vw,40px)"><img src="{{ page.cover }}" alt="" loading="lazy">{% if page.cover_code %}<span class="frame__code">{{ page.cover_code }}</span>{% endif %}</div>{% endif %}
-      <article class="prose" style="margin-inline:auto">
+    <div class="split">
+      <article class="prose">
+        {% if page.cover %}
+        <div class="frame frame--wide">
+          <img src="{{ page.cover }}" alt="" loading="lazy">
+          {% if page.cover_code %}<span class="tag mono">{{ page.cover_code }}</span>{% endif %}
+          <i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br br_"></i>
+        </div>
+        {% endif %}
         {{ content }}
       </article>
 
-      <div style="max-width:64ch;margin:40px auto 0">
-        <a class="viewall" href="/blog/">Back to journal <span class="ar">→</span></a>
-      </div>
+      <aside class="aside">
+        <div class="frame frame--glyph">
+          <span class="frame__glyph">{{ page.glyph | default: "款" }}</span>
+          <span class="tag mono">ENTRY / {{ page.number }}</span>
+          <i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br br_"></i>
+        </div>
+        <div class="status status--wide hud">
+          <i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br br_"></i>
+          <dl class="rows">
+            <dt>Date</dt><dd>{{ page.date | date: "%Y.%m.%d" }}</dd>
+            {% if page.location %}<dt>Place</dt><dd>{{ page.location }}</dd>{% endif %}
+            {% if page.tags %}<dt>Tags</dt><dd>{% for tag in page.tags %}#{{ tag }} {% endfor %}</dd>{% endif %}
+          </dl>
+        </div>
+      </aside>
     </div>
-  </section>
+
+    {% include kuan-cta.html href="/blog/" label="Journal" eyebrow="Back → [04]" %}
+  </main>

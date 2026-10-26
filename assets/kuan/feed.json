@@ -1,0 +1,120 @@
+{
+  "site": {
+    "tagline": "Custom DIY studio. Tech design curious about clothes, cities, and the details in between.",
+    "place": "Sài Gòn / Việt Nam",
+    "coords": "10°47′47″N 106°44′23″E",
+    "since": "2020",
+    "mode": "Custom / DIY",
+    "ticker": [
+      "Custom",
+      "DIY",
+      "Modification",
+      "Sài Gòn",
+      "Since 2020",
+      "Streetwear",
+      "款"
+    ]
+  },
+  "posts": [
+    {
+      "type": "image",
+      "src": "/assets/img/portrait.jpg",
+      "alt": "/assets/kuan/sig-portrait.jpg",
+      "code": "KSW-001",
+      "kind": "Frame",
+      "title": "Kuan / first look",
+      "caption": "Campaign frame. Hover — the signal version.",
+      "signal": 0.82
+    },
+    {
+      "type": "image",
+      "src": "/assets/kuan/gen-workshop.jpg",
+      "alt": "/assets/kuan/gen-workshop-sig.jpg",
+      "code": "MOOD-01",
+      "kind": "Mood",
+      "title": "Night shift",
+      "caption": "Generated mood image — the workshop after midnight.",
+      "signal": 0.58
+    },
+    {
+      "type": "image",
+      "src": "/assets/kuan/sig-facade.jpg",
+      "code": "SIG-01",
+      "kind": "Signal",
+      "title": "Facade, melted",
+      "caption": "A frame from the Sài Gòn night loop, pixel-sorted.",
+      "signal": 0.61
+    },
+    {
+      "type": "gen",
+      "gen": "terrain",
+      "code": "GEN-01",
+      "kind": "Live",
+      "title": "SGN terrain",
+      "caption": "Generated in the browser. Never the same twice.",
+      "signal": 1
+    },
+    {
+      "type": "image",
+      "src": "/assets/kuan/gen-jacket.jpg",
+      "alt": "/assets/kuan/gen-jacket-sig.jpg",
+      "code": "MOOD-02",
+      "kind": "Mood",
+      "title": "Re-cut sleeve",
+      "caption": "Generated mood image — raw seams, reflective tape, a D-ring.",
+      "signal": 0.69
+    },
+    {
+      "type": "image",
+      "src": "/assets/kuan/cap-jayu.jpg",
+      "code": "KSW-002",
+      "kind": "Concept",
+      "title": "자유 cap",
+      "caption": "Cap concept — 자유 means freedom.",
+      "signal": 0.47
+    },
+    {
+      "type": "gen",
+      "gen": "type",
+      "words": [
+        "자유",
+        "FREEDOM",
+        "TỰ DO",
+        "СВОБОДА"
+      ],
+      "code": "GEN-02",
+      "kind": "Type",
+      "title": "Freedom, four ways",
+      "caption": "Korean, English, Vietnamese, Russian.",
+      "signal": 0.9
+    },
+    {
+      "type": "image",
+      "src": "/assets/kuan/gen-fabric.jpg",
+      "alt": "/assets/kuan/gen-fabric-sig.jpg",
+      "code": "MOOD-03",
+      "kind": "Mood",
+      "title": "Ripstop, rain",
+      "caption": "Generated mood image — water on black nylon.",
+      "signal": 0.52
+    },
+    {
+      "type": "image",
+      "src": "/assets/kuan/sig-square.jpg",
+      "code": "SIG-02",
+      "kind": "Signal",
+      "title": "Square, dripping",
+      "caption": "Downtown from above, sorted by light.",
+      "signal": 0.73
+    },
+    {
+      "type": "video",
+      "src": "/assets/img/saigon.webm",
+      "code": "KSW-VID-01",
+      "kind": "Motion",
+      "title": "Sài Gòn, night loop",
+      "caption": "The city the project grew out of.",
+      "signal": 0.64
+    }
+  ]
+}

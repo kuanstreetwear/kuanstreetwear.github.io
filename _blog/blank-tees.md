@@ -8,8 +8,6 @@ tags: [basics, fit, materials]
 excerpt: Why the right blank matters more than the print. Neckline, fabric weight, shoulder drop, and how a few millimetres change the whole silhouette.
 description: Why the right blank tee matters more than the print — neckline, fabric weight, shoulder drop, and proportion.
 og_description: Why the right blank matters more than the print.
-cover: https://picsum.photos/seed/ksw85/1200/750?grayscale
-cover_code: BLANK / STUDY
 ---
 Most people judge a tee by the graphic. I judge it by the blank. The print is a layer on top — the blank is the actual garment, the thing your body lives in. Get it wrong and no graphic will save it.
 

@@ -1,0 +1,5 @@
+{%- comment -%} Big closing link. include.href / include.label / include.eyebrow {%- endcomment -%}
+    <div class="cta">
+      <span class="eyebrow">{{ include.eyebrow | default: "Continue" }}</span>
+      <a href="{{ include.href }}">{{ include.label }}<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M22 78 L72 28 M34 28 H72 V66" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/></svg></a>
+    </div>

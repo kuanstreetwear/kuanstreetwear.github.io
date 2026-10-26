@@ -7,6 +7,30 @@ hosted on **GitHub Pages** at [kuanstreetwear.com](https://kuanstreetwear.com).
 > documentation, and visual identity — between Vietnamese street culture and
 > post-Soviet utility.
 
+## Redesign (branch `redesign-feed`, draft)
+
+New dark design — style follows board.kuanconcept.com (graphite, Unbounded / Onest / JetBrains
+Mono) plus a HUD/glitch layer; `prefers-reduced-motion` disables motion.
+
+- `_layouts/kuan.html` + `_includes/kuan-{head,bar,foot,cta}.html` — shared shell: top bar with
+  numbered nav, full-screen mobile menu, footer. Contacts/location come from `_data/site.yml`.
+- `assets/kuan/kuan.css` (all styles), `kuan.js` (shared motion: clock, menu, scramble, reveal),
+  `home.js` (home only: boot, archive cards, generative tiles, viewer).
+- Home archive = `assets/kuan/feed.json`. A post is `image` (optional `alt` = hover version),
+  `video`, or `gen` (`terrain` dot map / `type` kinetic poster, drawn in the browser).
+  Mood images generated with AI are labelled `kind: "Mood"`.
+- `tools/pixelsort.py` — turns any photo or video frame into a pixel-sorted "signal" still
+  (`python3 tools/pixelsort.py in.jpg assets/kuan/sig-x.jpg --lo 30 --hi 255`).
+- Already on the new layout: home, Story, About. Still old: Journal (`/blog/`), Projects, 404.
+
+Build locally (Jekyll 4, no bundler needed; GitHub Pages builds with its own Jekyll on push):
+
+```bash
+gem install --user-install jekyll kramdown-parser-gfm
+JEKYLL_NO_BUNDLER_REQUIRE=true jekyll build --watch   # → _site/
+python3 -m http.server 4100 --directory _site          # → http://localhost:4100
+```
+
 ## Engine
 
 Built with **Jekyll** (the generator GitHub Pages runs natively) plus **Sveltia

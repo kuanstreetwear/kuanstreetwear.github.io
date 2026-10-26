@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+{%- include kuan-head.html -%}
+</head>
+<body class="{{ page.body_class }}">
+  <!-- Channel-split filter for hover glitches; inline so it needs no request. -->
+  <svg class="defs" aria-hidden="true">
+    <filter id="rgb-split" x="-5%" y="0" width="110%" height="100%">
+      <feColorMatrix in="SourceGraphic" type="matrix" result="r" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/>
+      <feOffset in="r" dx="-5" dy="0" result="r2"/>
+      <feColorMatrix in="SourceGraphic" type="matrix" result="gb" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+      <feOffset in="gb" dx="4" dy="0" result="gb2"/>
+      <feBlend in="r2" in2="gb2" mode="screen"/>
+    </filter>
+  </svg>
+
+{% include kuan-bar.html %}
+
+{{ content }}
+
+{% include kuan-foot.html %}
+
+  {%- comment -%} ?v=build time: browsers otherwise keep serving last deploy's JS/CSS {%- endcomment %}
+  <script src="/assets/kuan/kuan.js?v={{ site.time | date: '%s' }}" defer></script>
+  {%- if page.home %}
+  <script src="/assets/kuan/home.js?v={{ site.time | date: '%s' }}" defer></script>
+  {%- endif %}
+</body>
+</html>

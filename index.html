@@ -1,208 +1,115 @@
 ---
-layout: default
-active: main
-seo_title: Kuan Streetwear — Personal archive · Sài Gòn
-description: "Kuan Streetwear is a personal clothing modification project and visual archive based in Sài Gòn — local streetwear culture, post-Soviet utility, quiet technological details."
-og_description: A personal clothing modification project and visual archive based in Sài Gòn.
+layout: kuan
+home: true
+seo_title: Kuan Streetwear — Sài Gòn
+description: Kuan Streetwear — custom DIY studio and visual archive from Sài Gòn.
+og_description: Custom DIY studio. Sài Gòn.
 ---
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero__grid wrap">
-      <div class="hero__left">
-        <div class="hero__eyebrow">
-          <span class="brk">Personal project / Archive</span>
+{%- assign contact = site.data.site.contact -%}
+  <div class="boot mono" aria-hidden="true">
+    <span class="boot__mark">KUAN<i class="dot"></i></span>
+    <span>[SIGNAL..]</span>
+    <span>[<b class="boot__pct">....000%</b>]</span>
+  </div>
+
+  <main>
+    <!-- HERO: thin-line cell grid -->
+    <section class="hero" aria-label="Kuan Streetwear">
+      <div class="cell c-side">
+        <span class="glyph">款</span>
+        <div class="side__txt mono">
+          <b>AREA // SGN-02</b>
+          <span class="caution">CAUTION</span>
+          <span class="stripes" aria-hidden="true"></span>
+          <small>Hand-modified pieces. Each one differs from the last.</small>
         </div>
-        <h1>Kuan<br>Streetwear</h1>
-        <p class="hero__intro">A personal clothing modification project and visual archive based in Sài Gòn. Exploring utilitarian details, local culture, and the spaces in between.</p>
-        <div class="hero__index">
-          <span class="tlabel tlabel--ink">Archive index</span>
-          <div class="archive-bar">
-            <span class="swatch"></span>
-            <span class="mono" style="font-size:.72rem">2020</span>
-            <span class="rule"></span>
-            <span class="mono" style="font-size:.72rem">2024</span>
-          </div>
-          <span class="coord" style="line-height:1.7">10°47′47″N&nbsp;&nbsp;106°44′23″E<br>SAI GON</span>
+        <span class="barcode" aria-hidden="true"></span>
+      </div>
+
+      <div class="cell c-video media-cell">
+        <video src="/assets/img/saigon.webm" muted loop playsinline autoplay preload="metadata"></video>
+        <span class="tag mono">REC ● SÀI GÒN / NIGHT</span>
+      </div>
+
+      <div class="cell c-portrait media-cell">
+        <img src="/assets/img/portrait.jpg" alt="Kuan Streetwear campaign frame" decoding="async">
+        <span class="tag mono">KSW-001</span>
+      </div>
+
+      <div class="cell c-title">
+        <h1 class="title" data-glitch>
+          <span>KUAN</span>
+          <span>STREET<em>WEAR</em></span>
+        </h1>
+        <p class="lead" data-bind="tagline"></p>
+      </div>
+
+      <a class="cell c-arrow" href="#archive" aria-label="Go to archive">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M22 78 L72 28 M34 28 H72 V66" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="square"/></svg>
+      </a>
+
+      <div class="cell c-foot mono">
+        <span class="load"><span>Loading</span><span class="segs" data-segs="16" data-v="0.7"></span></span>
+        <span data-bind="coords"></span>
+        <span class="hide-sm" data-bind="since-line"></span>
+      </div>
+    </section>
+
+    <div class="ticker mono" aria-hidden="true"><div class="ticker__run" data-bind="ticker"></div></div>
+
+    <!-- ARCHIVE: HUD cards with air around them -->
+    <section class="sec" id="archive">
+      <header class="sechead">
+        <span class="eyebrow" data-scramble>[01] Archive</span>
+        <h2>Pieces, concepts<br>and frames.</h2>
+      </header>
+      <div class="cards" data-bind="cards"></div>
+    </section>
+
+    <!-- STATUS: board-style panel -->
+    <section class="sec sec--status">
+      <header class="sechead">
+        <span class="eyebrow" data-scramble>[02] Status</span>
+      </header>
+      <div class="status hud">
+        <i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br br_"></i>
+        <div class="status__head">
+          <span class="chip"><i class="dot dot--live"></i>Active</span>
+          <span class="mono dim">STUDIO / SGN-02</span>
         </div>
-      </div>
-
-      <div class="hero__right">
-        <div class="hero__collage">
-          <div class="frame frame--photo frame--shade">
-            <img src="https://picsum.photos/seed/ksw11/800/900?grayscale" alt="" loading="lazy">
-            <span class="frame__code">ĐIỆN · ĐIỆN TỬ / THANH CÔNG</span>
-            <span class="frame__tr">Q.5</span>
-          </div>
-          <div class="frame frame--photo frame--shade">
-            <img src="https://picsum.photos/seed/ksw12/800/900?grayscale" alt="" loading="lazy">
-            <span class="frame__code">P.10 / Q.5</span>
-            <span class="frame__tr" style="color:var(--accent-2)">●</span>
-          </div>
-          <div class="frame frame--dark frame--photo frame--shade">
-            <img src="https://picsum.photos/seed/ksw13/800/900?grayscale" alt="" loading="lazy">
-            <span class="frame__code">METAL / MESH</span>
-          </div>
-        </div>
-
-        <div class="hero__feature">
-          <div class="frame frame--dark frame--photo frame--shade">
-            <img src="https://picsum.photos/seed/ksw21/1000/1300?grayscale" alt="" loading="lazy">
-          </div>
-          <span class="feat-kuan">КУАН</span>
-          <div class="feat-arch">
-            <span class="t">KSW-ARCHIVE</span>
-            <span class="s">SAIGON, VN</span>
-            <span class="s">10°47′47″N | 106°44′23″E</span>
-          </div>
-          <span class="feat-plus plus" style="color:rgba(255,255,255,.45)">+</span>
-          <div class="patch">
-            <div class="p1">ПРОЕКТ</div>
-            <div class="p2">СДЕЛАНО В САЙГОНЕ</div>
-            <div class="p3">2020—∞</div>
-          </div>
-          <dl class="spec hero__specs">
-            <dt>Category</dt><dd>Outerwear</dd>
-            <dt>Material</dt><dd>Cotton / Nylon</dd>
-            <dt>Origin</dt><dd>Sài Gòn / VN</dd>
-            <dt>Date</dt><dd>2023</dd>
-          </dl>
-        </div>
-
-        <div class="hero__rail">
-          <div class="ix">
-            <span class="tlabel">Index</span>
-            <div class="n">001</div>
-          </div>
-          <span class="vlabel jp">アーカイブ</span>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- PROJECTS / SELECTED -->
-  <section class="band">
-    <div class="wrap">
-      <div class="band__head">
-        <span class="brk">Projects / Selected</span>
-        <a class="viewall" href="/projects/">View all projects <span class="ar">→</span></a>
-      </div>
-      <div class="proj-grid">
-
-        <a class="proj" href="/projects/ksw-001/" data-reveal>
-          <div class="proj__media">
-            <div class="frame frame--dark frame--photo frame--shade frame--ratio34"><img src="https://picsum.photos/seed/ksw31/800/1066?grayscale" alt="" loading="lazy"><span class="frame__code">DISTRICT 5</span></div>
-            <span class="proj__num">001</span><span class="proj__plus plus">+</span>
-          </div>
-          <div class="proj__body">
-            <div class="proj__row"><span class="proj__code">KSW-001</span><span class="proj__meta">2021</span></div>
-            <div class="proj__row"><span class="proj__title">Block 05 — Sài Gòn</span><span class="proj__meta"><span class="plus">+</span>Sài Gòn</span></div>
-            <p class="proj__desc">Field notes from District 5. Graphics inspired by apartment blocks, signage, and everyday infrastructure.</p>
-          </div>
-          <div class="proj__tags"><span># graphic</span><span># field notes</span><span># district 5</span></div>
-        </a>
-
-        <a class="proj" href="/projects/" data-reveal>
-          <div class="proj__media">
-            <div class="frame frame--dark frame--photo frame--shade frame--ratio34"><img src="https://picsum.photos/seed/ksw32/800/1066?grayscale" alt="" loading="lazy"><span class="frame__code">WEATHER STUDY</span></div>
-            <span class="proj__num">002</span><span class="proj__plus plus">+</span>
-          </div>
-          <div class="proj__body">
-            <div class="proj__row"><span class="proj__code">KSW-002</span><span class="proj__meta">2022</span></div>
-            <div class="proj__row"><span class="proj__title">Form Follows Weather</span><span class="proj__meta"><span class="plus">+</span>Sài Gòn</span></div>
-            <p class="proj__desc">Study of tropical weatherwear. Breathable layers, packable forms, function over decoration.</p>
-          </div>
-          <div class="proj__tags"><span># weatherwear</span><span># material study</span><span># utility</span></div>
-        </a>
-
-        <a class="proj" href="/projects/" data-reveal>
-          <div class="proj__media">
-            <div class="frame frame--dark frame--photo frame--shade frame--ratio34"><img src="https://picsum.photos/seed/ksw33/800/1066?grayscale" alt="" loading="lazy"><span class="frame__code">СДЕЛАНО В САЙГОНЕ</span></div>
-            <span class="proj__num">003</span><span class="proj__plus plus">+</span>
-          </div>
-          <div class="proj__body">
-            <div class="proj__row"><span class="proj__code">KSW-003</span><span class="proj__meta">2023</span></div>
-            <div class="proj__row"><span class="proj__title">Сделано в Сайгоне</span><span class="proj__meta"><span class="plus">+</span>Sài Gòn</span></div>
-            <p class="proj__desc">A tribute to the city that shaped this project. Simple pieces, made and tested locally.</p>
-          </div>
-          <div class="proj__tags"><span># local made</span><span># saigon</span><span># identity</span></div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOG / LATEST -->
-  <section class="band">
-    <div class="wrap">
-      <div class="band__head">
-        <span class="brk">Blog / Latest</span>
-        <a class="viewall" href="/blog/">View all articles <span class="ar">→</span></a>
-      </div>
-      <div class="post-grid">
-        <a class="post" href="/blog/blank-tees/" data-reveal>
-          <div class="post__thumb frame frame--photo frame--shade"><img src="https://picsum.photos/seed/ksw41/600/600?grayscale" alt="" loading="lazy"></div>
-          <div>
-            <span class="post__date">May 12, 2024</span>
-            <h3 class="post__title">On Blank Tees<br>and Proportions</h3>
-            <p class="post__excerpt">Why the right blank matters. Neck, fabric, weight, and the silhouette.</p>
-            <span class="post__more">Read more <span class="ar">→</span></span>
-          </div>
-        </a>
-        <a class="post" href="/blog/" data-reveal>
-          <div class="post__thumb frame frame--dark frame--photo frame--shade"><img src="https://picsum.photos/seed/ksw42/600/600?grayscale" alt="" loading="lazy"></div>
-          <div>
-            <span class="post__date">Apr 03, 2024</span>
-            <h3 class="post__title">Local Brands,<br>Local Language</h3>
-            <p class="post__excerpt">A list of Vietnamese labels and makers that inspire us right now.</p>
-            <span class="post__more">Read more <span class="ar">→</span></span>
-          </div>
-        </a>
-        <a class="post" href="/blog/" data-reveal>
-          <div class="post__thumb frame frame--photo frame--shade"><img src="https://picsum.photos/seed/ksw43/600/600?grayscale" alt="" loading="lazy"></div>
-          <div>
-            <span class="post__date">Jan 18, 2024</span>
-            <h3 class="post__title">Materials<br>and Aging</h3>
-            <p class="post__excerpt">How fabrics age in Sài Gòn's climate, and why wear is part of the design.</p>
-            <span class="post__more">Read more <span class="ar">→</span></span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- STORY / INTRODUCTION (light) -->
-  <section class="band" style="padding-bottom:0">
-    <div class="wrap" style="margin-bottom:24px"><span class="brk">Story / Introduction</span></div>
-    <div class="story-band">
-      <div class="story-band__media">
-        <div class="frame frame--dark frame--photo frame--shade"><video src="/assets/img/saigon.webm" autoplay muted loop playsinline preload="auto"></video><span class="frame__code">SÀI GÒN</span></div>
-      </div>
-      <div class="story-band__body">
-        <div>
-          <h2>How it started</h2>
-          <p>Kuan Streetwear began after visiting Vietnam in 2020. I was drawn to the raw energy, the visual noise, and the resourcefulness in everyday style.</p>
-          <p>Later, I returned to Saigon and continued this project in a smaller, more realistic format — learning, experimenting, and documenting the process.</p>
-        </div>
-        <dl class="meta-table">
-          <div class="row"><dt>Origin</dt><dd>Saint-Petersburg,<br>Russia</dd></div>
-          <div class="row"><dt>Heritage</dt><dd>Korea</dd></div>
-          <div class="row"><dt>Inspired</dt><dd>Japan</dd></div>
-          <div class="row"><dt>Based in</dt><dd>Saigon, Vietnam</dd></div>
+        <dl class="rows">
+          <dt>Base</dt><dd data-bind="place"></dd>
+          <dt>Since</dt><dd data-bind="since"></dd>
+          <dt>Mode</dt><dd data-bind="mode"></dd>
+          <dt>Archive</dt><dd><span data-bind="count"></span> entries</dd>
+          <dt>Next drop</dt><dd><span class="segs segs--scan" data-segs="20"></span></dd>
         </dl>
-        <div class="story-band__side">
-          <div class="stamp">
-            <svg viewBox="0 0 116 116" aria-hidden="true">
-              <circle cx="58" cy="58" r="56" fill="none" stroke="currentColor" stroke-width="1"/>
-              <circle cx="58" cy="58" r="44" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/>
-              <path id="sc" d="M58,14 a44,44 0 1,1 -0.1,0" fill="none"/>
-              <text font-family="IBM Plex Mono, monospace" font-size="7" letter-spacing="3" fill="currentColor">
-                <textPath href="#sc" startOffset="2%">KSW · ARCHIVE · SÀI GÒN · 2020—∞ · </textPath>
-              </text>
-            </svg>
-            <div class="stamp__c"><b>SAI<br>GON</b><small>2020—∞</small></div>
-          </div>
-        </div>
-        <span class="vlabel jp" style="align-self:stretch">サイゴン ベトナム</span>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="sec contact" id="contact">
+      <span class="eyebrow" data-scramble>[03] Contact</span>
+      <h2 class="contact__t">Open<br>channel<span class="caret">_</span></h2>
+      <nav class="brk-links mono" aria-label="Contacts">
+        <a href="{{ contact.instagram_url }}" target="_blank" rel="noopener">[Instagram]</a>
+        <a href="{{ contact.telegram_url }}" target="_blank" rel="noopener">[Telegram]</a>
+        <a href="mailto:{{ contact.email }}">[Email]</a>
+      </nav>
+    </section>
+  </main>
+
+  <dialog class="viewer" aria-label="Post">
+    <button class="viewer__close mono" type="button" aria-label="Close">[ESC]</button>
+    <button class="viewer__nav viewer__nav--prev mono" type="button" aria-label="Previous">[‹]</button>
+    <figure class="viewer__frame hud">
+      <i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br br_"></i>
+      <div class="viewer__media"></div>
+      <figcaption class="viewer__cap">
+        <span class="viewer__code mono"></span>
+        <strong class="viewer__title"></strong>
+        <span class="viewer__text"></span>
+      </figcaption>
+    </figure>
+    <button class="viewer__nav viewer__nav--next mono" type="button" aria-label="Next">[›]</button>
+  </dialog>

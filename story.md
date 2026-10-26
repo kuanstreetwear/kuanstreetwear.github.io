@@ -32,7 +32,7 @@ This site is where those projects are collected and published — part local fas
 
 ### What this project is
 
-<ul class="bul">
+<ul>
   <li>A personal clothing modification practice</li>
   <li>A visual archive of details, references, and experiments</li>
   <li>A bridge between Vietnamese street culture and post-Soviet utility</li>

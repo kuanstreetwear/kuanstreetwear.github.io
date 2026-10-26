@@ -1,46 +1,51 @@
 ---
-layout: default
+layout: kuan
 ---
 {%- assign contact = site.data.site.contact -%}
 {%- assign loc = site.data.site.location -%}
-  <header class="phead">
-    <div class="wrap">
-      <div class="phead__top">
-        <span class="brk">About / Contact · О ПРОЕКТЕ</span>
-        <span class="phead__num">款 — KSW</span>
-      </div>
-      <h1>About</h1>
-      {% if page.intro %}<p>{{ page.intro }}</p>{% endif %}
-    </div>
-  </header>
+  <main class="page">
+    <header class="phead">
+      <span class="eyebrow" data-scramble>[03] About · О проекте</span>
+      <h1 data-glitch><span>About</span></h1>
+      {% if page.intro %}<p class="lead dim">{{ page.intro }}</p>{% endif %}
+    </header>
 
-  <section class="band">
-    <div class="wrap about-grid">
-      <div class="prose">
+    <div class="split">
+      <article class="prose">
         {{ content }}
         {% if page.summary_points %}
         <h3>Project summary</h3>
-        <ul class="bul">
+        <ul>
           {% for point in page.summary_points %}<li>{{ point }}</li>
           {% endfor %}
         </ul>
         {% endif %}
-      </div>
+      </article>
 
-      <aside>
-        {% if page.portrait %}<div class="frame frame--photo frame--shade frame--ratio45" style="margin-bottom:24px"><img src="{{ page.portrait }}" alt="" loading="lazy">{% if page.portrait_code %}<span class="frame__code">{{ page.portrait_code }}</span>{% endif %}</div>{% endif %}
-        <h4 class="tlabel tlabel--ink" style="margin-bottom:8px">Contact</h4>
-        <ul class="contact-list">
-          <li><a href="{{ contact.instagram_url }}" target="_blank" rel="noopener"><span class="k">{% include icon.html name="instagram" %}Instagram</span><span class="v">@{{ contact.instagram_handle }}</span></a></li>
-          <li><a href="mailto:{{ contact.email }}" data-copy="{{ contact.email }}"><span class="k">{% include icon.html name="mail" %}Email</span><span class="v">{{ contact.email }}</span></a></li>
-          <li><a href="{{ contact.telegram_url }}" target="_blank" rel="noopener"><span class="k">{% include icon.html name="telegram" %}Telegram</span><span class="v">@{{ contact.telegram_handle }}</span></a></li>
-        </ul>
-        <dl class="dspec" style="margin-top:24px">
-          <div class="r"><dt>Location</dt><dd>{{ loc.place }}</dd></div>
-          <div class="r"><dt>Coordinates</dt><dd>{{ loc.coordinates }}</dd></div>
-          <div class="r"><dt>Since</dt><dd>{{ loc.since }}</dd></div>
-        </dl>
-        <span class="tlabel" style="display:block;margin-top:20px">サイゴン · ベトナム · 款</span>
+      <aside class="aside">
+        {%- if page.portrait %}
+        <div class="frame">
+          <img src="{{ page.portrait }}" alt="" loading="lazy">
+          {% if page.portrait_code %}<span class="tag mono">{{ page.portrait_code }}</span>{% endif %}
+          <i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br br_"></i>
+        </div>
+        {%- endif %}
+        <div class="status status--wide hud">
+          <i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br br_"></i>
+          <div class="status__head"><span class="chip"><i class="dot dot--live"></i>Online</span><span class="mono dim">CONTACT / KSW</span></div>
+          <dl class="rows">
+            <dt>Location</dt><dd>{{ loc.place }}</dd>
+            <dt>Coords</dt><dd>{{ loc.coordinates }}</dd>
+            <dt>Since</dt><dd>{{ loc.since }}</dd>
+          </dl>
+          <nav class="brk-links mono" aria-label="Contacts">
+            <a href="{{ contact.instagram_url }}" target="_blank" rel="noopener">[Instagram]</a>
+            <a href="{{ contact.telegram_url }}" target="_blank" rel="noopener">[Telegram]</a>
+            <a href="mailto:{{ contact.email }}">[{{ contact.email }}]</a>
+          </nav>
+        </div>
       </aside>
     </div>
-  </section>
+
+    {% include kuan-cta.html href="/#archive" label="Archive" eyebrow="Continue → [01]" %}
+  </main>

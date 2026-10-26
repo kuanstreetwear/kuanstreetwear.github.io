@@ -1,0 +1,24 @@
+{%- comment -%} Sticky top bar + full-screen mobile menu. `page.active` marks the current item. {%- endcomment -%}
+{%- assign nav = "archive|Archive|/#archive,story|Story|/story/,about|About|/about/,blog|Journal|/blog/,contact|Contact|/#contact" | split: "," -%}
+  <header class="bar">
+    <a class="mark" href="/" aria-label="Kuan Streetwear — home">KUAN<i class="dot"></i></a>
+    <nav class="nav mono" aria-label="Main">
+      {%- for item in nav -%}{%- assign p = item | split: "|" -%}
+      <a href="{{ p[2] }}"{% if page.active == p[0] %} aria-current="page"{% endif %}>{{ p[1] }}<sup>{{ forloop.index | prepend: "0" }}</sup></a>
+      {%- endfor %}
+    </nav>
+    <span class="clock mono" data-clock>SGN --:--</span>
+    <button class="burger mono" type="button" aria-expanded="false" aria-controls="menu">[MENU]</button>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav class="menu__links" aria-label="Main">
+      {%- for item in nav -%}{%- assign p = item | split: "|" -%}
+      <a href="{{ p[2] }}"{% if page.active == p[0] %} aria-current="page"{% endif %}><span class="mono">{{ forloop.index | prepend: "0" }}</span><b data-text="{{ p[1] }}">{{ p[1] }}</b></a>
+      {%- endfor %}
+    </nav>
+    <div class="menu__foot mono">
+      <span>{{ site.data.site.location.place }}</span>
+      <span>{{ site.data.site.location.coordinates }}</span>
+    </div>
+  </div>

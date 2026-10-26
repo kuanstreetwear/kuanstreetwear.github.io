@@ -1,0 +1,26 @@
+{%- comment -%} <head> for the new dark design. Title: explicit seo_title wins; collection items get the brand suffix. {%- endcomment -%}
+{%- if page.seo_title -%}
+  {%- assign page_title = page.seo_title -%}
+{%- elsif page.collection -%}
+  {%- assign page_title = page.title | append: " — Kuan Streetwear" -%}
+{%- else -%}
+  {%- assign page_title = page.title | default: site.title -%}
+{%- endif -%}
+{%- assign desc = page.description | default: site.description -%}
+{%- assign canonical = page.url | absolute_url -%}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ desc | strip_newlines }}">
+  <meta name="theme-color" content="#121312">
+  <meta property="og:type" content="{{ page.og_type | default: 'website' }}">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ page.og_description | default: desc | strip_newlines }}">
+  <meta property="og:image" content="{{ '/logo.png' | absolute_url }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="{{ canonical }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/kuan/kuan.css?v={{ site.time | date: '%s' }}">
